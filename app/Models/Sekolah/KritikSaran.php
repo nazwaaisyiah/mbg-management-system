@@ -11,11 +11,15 @@ class KritikSaran extends Model
 
     protected $connection = 'db_sekolah';
     protected $table = 'kritik_saran';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'sekolah_id',
+        'tanggal',
+        'kritik_saran',
+        'status',
+    ];
 
     public function sekolah()
     {
-        return $this->belongsTo(Sekolah::class);
+        return $this->belongsTo(Sekolah::class, 'sekolah_id');
     }
 }

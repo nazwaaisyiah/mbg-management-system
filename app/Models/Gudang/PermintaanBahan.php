@@ -11,11 +11,15 @@ class PermintaanBahan extends Model
 
     protected $connection = 'db_gudang';
     protected $table = 'permintaan_bahan';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'bahan_id',
+        'tanggal',
+        'jumlah',
+        'status',
+    ];
 
     public function bahan()
     {
-        return $this->belongsTo(Bahan::class);
+        return $this->belongsTo(Bahan::class, 'bahan_id');
     }
 }

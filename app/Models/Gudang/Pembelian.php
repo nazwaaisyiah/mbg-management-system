@@ -11,11 +11,15 @@ class Pembelian extends Model
 
     protected $connection = 'db_gudang';
     protected $table = 'pembelian';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'bahan_id',
+        'tanggal',
+        'jumlah',
+        'supplier',
+    ];
 
     public function bahan()
     {
-        return $this->belongsTo(Bahan::class);
+        return $this->belongsTo(Bahan::class, 'bahan_id');
     }
 }

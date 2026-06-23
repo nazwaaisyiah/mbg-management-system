@@ -11,11 +11,16 @@ class PesananHarian extends Model
 
     protected $connection = 'db_sekolah';
     protected $table = 'pesanan_harian';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'sekolah_id',
+        'tanggal',
+        'jumlah_porsi',
+        'menu',
+        'status',
+    ];
 
     public function sekolah()
     {
-        return $this->belongsTo(Sekolah::class);
+        return $this->belongsTo(Sekolah::class, 'sekolah_id');
     }
 }

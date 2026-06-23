@@ -11,16 +11,21 @@ class Pengiriman extends Model
 
     protected $connection = 'db_kurir';
     protected $table = 'pengiriman';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'kurir_id',
+        'sekolah_id',
+        'tanggal',
+        'jumlah_porsi',
+        'status',
+    ];
 
     public function kurir()
     {
-        return $this->belongsTo(Kurir::class);
+        return $this->belongsTo(Kurir::class, 'kurir_id');
     }
 
     public function tracking()
     {
-        return $this->hasMany(Tracking::class);
+        return $this->hasMany(Tracking::class, 'pengiriman_id');
     }
 }

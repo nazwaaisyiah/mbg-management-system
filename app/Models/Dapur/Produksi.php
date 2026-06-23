@@ -11,11 +11,15 @@ class Produksi extends Model
 
     protected $connection = 'db_dapur';
     protected $table = 'produksi';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'menu_id',
+        'tanggal',
+        'jumlah_porsi',
+        'status',
+    ];
 
     public function menu()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class, 'menu_id');
     }
 }

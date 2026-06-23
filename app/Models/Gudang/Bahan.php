@@ -11,16 +11,25 @@ class Bahan extends Model
 
     protected $connection = 'db_gudang';
     protected $table = 'bahan';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'nama_bahan',
+        'stok',
+        'satuan',
+        'minimum_stok',
+    ];
 
     public function pembelian()
     {
-        return $this->hasMany(Pembelian::class);
+        return $this->hasMany(Pembelian::class, 'bahan_id');
     }
 
     public function permintaanBahan()
     {
-        return $this->hasMany(PermintaanBahan::class);
+        return $this->hasMany(PermintaanBahan::class, 'bahan_id');
+    }
+
+    public function isBahanKritis()
+    {
+        return $this->stok <= $this->minimum_stok;
     }
 }

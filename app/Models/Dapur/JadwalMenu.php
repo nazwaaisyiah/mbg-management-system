@@ -11,11 +11,16 @@ class JadwalMenu extends Model
 
     protected $connection = 'db_dapur';
     protected $table = 'jadwal_menu';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'menu_id',
+        'hari',
+        'tanggal_mulai',
+        'tanggal_selesai',
+        'status',
+    ];
 
     public function menu()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class, 'menu_id');
     }
 }

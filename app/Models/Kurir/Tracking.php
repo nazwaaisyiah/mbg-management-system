@@ -11,11 +11,15 @@ class Tracking extends Model
 
     protected $connection = 'db_kurir';
     protected $table = 'tracking';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'pengiriman_id',
+        'lokasi',
+        'waktu',
+        'status',
+    ];
 
     public function pengiriman()
     {
-        return $this->belongsTo(Pengiriman::class);
+        return $this->belongsTo(Pengiriman::class, 'pengiriman_id');
     }
 }

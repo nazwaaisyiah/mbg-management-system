@@ -11,11 +11,14 @@ class Kurir extends Model
 
     protected $connection = 'db_kurir';
     protected $table = 'kurir';
-    protected $guarded = [];
-    public $timestamps = false;
+    protected $fillable = [
+        'nama_kurir',
+        'telepon',
+        'kendaraan',
+    ];
 
     public function pengiriman()
     {
-        return $this->hasMany(Pengiriman::class);
+        return $this->hasMany(Pengiriman::class, 'kurir_id');
     }
 }

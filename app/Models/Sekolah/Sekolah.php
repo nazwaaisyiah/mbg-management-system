@@ -11,16 +11,11 @@ class Sekolah extends Model
 
     protected $connection = 'db_sekolah';
     protected $table = 'sekolah';
-    protected $guarded = [];
-    public $timestamps = false;
-
-    public function pesananHarian()
-    {
-        return $this->hasMany(PesananHarian::class);
-    }
-
-    public function kritikSaran()
-    {
-        return $this->hasMany(KritikSaran::class);
-    }
+    protected $fillable = [
+        'nama_sekolah',
+        'alamat',
+        'telepon',
+        'email',
+        'jumlah_siswa',
+    ];
 }
